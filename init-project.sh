@@ -14,7 +14,7 @@ git init
 
 # set up the pip requirements
 touch requirements.txt
-echo "Tornado==2.1.1" >> requirements.txt
+echo "Tornado==2.4.1" >> requirements.txt
 
 # set up the Procfile
 touch Procfile
