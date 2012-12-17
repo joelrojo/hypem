@@ -1,10 +1,3 @@
-#	Sample main.py Tornado file
-# 
-#	Author: Mike Dory
-#		11.12.11
-#
-
-#!/usr/bin/env python
 import os.path
 import os
 import tornado.escape
