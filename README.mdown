@@ -1,0 +1,3 @@
+## HypeM Favorites Downloader
+
+Simple Tornado Python app that scrapes hypem.com and allows you to download your favorite list. Basic project to practice scraping techniques and learn Tornado. Plus I want my songs on my iTunes :)
