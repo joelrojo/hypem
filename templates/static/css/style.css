@@ -1,10 +1,3 @@
-/* 
-	Sample CSS file to go with the Heroku/Tornado setup
-
-	Author: Michael Dory
-		11.12.11
-*/
-
 /* reset *all* the things */
 
 html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -20,13 +13,4 @@ time, mark, audio, video {
 	font-size:100%;
 	vertical-align:baseline;
 	background:transparent;
-}									
-
-
-/* main */
-
-#main {
-
 }
-
-

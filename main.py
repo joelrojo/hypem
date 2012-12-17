@@ -14,14 +14,15 @@ define("port", default=5000, help="run on the given port", type=int)
 # application settings and handle mapping info
 class Application(tornado.web.Application):
 	def __init__(self):
-		handlers = [
-			(r"/([^/]+)?", MainHandler)
-		]
 		settings = dict(
 			template_path=os.path.join(os.path.dirname(__file__), "templates"),
 			static_path=os.path.join(os.path.dirname(__file__), "static"),
 			debug=True,
 		)
+		handlers = [
+			(r"/([^/]+)?", MainHandler),
+	    	(r"/(favicon\.ico)", tornado.web.StaticFileHandler, dict(path=settings['static_path'])),
+		]
 		tornado.web.Application.__init__(self, handlers, **settings)
 
 
