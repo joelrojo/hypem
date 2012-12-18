@@ -1,5 +1,19 @@
 {% extends "base.html" %}
 
+{% block jquery %}
+<script type='text/javascript'>
+    $(document).ready(function(){
+        setTimeout(function(){
+            $("body").fadeIn()
+        }, 500);
+    });
+</script>
+{% end %}
+
 {% block content %}
 <h1>{{ page_heading }}</h1>
+<form class="well">
+    <i class="icon-user"></i><input type="text" placeholder="username" />
+    <a class="btn btn-success">start</a>
+</form>
 {% end %}
