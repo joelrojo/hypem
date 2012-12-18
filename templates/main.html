@@ -12,8 +12,12 @@
 
 {% block content %}
 <h1>{{ page_heading }}</h1>
-<form class="well">
-    <i class="icon-user"></i><input type="text" placeholder="username" />
-    <a class="btn btn-success">start</a>
+<form action="/post_form/">
+<div class="input-prepend">
+    <span class="add-on"><i class="icon-user"></i></span>
+    <input type="text" placeholder="username" name="username" id="id_username" />
+</div>
+    
+<a class="btn btn-success"><i class="icon-download-alt icon-white"></i>start download</a>
 </form>
 {% end %}

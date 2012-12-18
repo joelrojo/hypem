@@ -6,6 +6,21 @@ import tornado.ioloop
 import tornado.options
 import tornado.web
 import unicodedata
+import requests
+from pyquery import PyQuery as pq
+import urllib
+import urlparse
+import json
+import re
+
+# helper functions
+def url_fix(s, charset='utf-8'):
+    if isinstance(s, unicode):
+        s = s.encode(charset, 'ignore')
+    scheme, netloc, path, qs, anchor = urlparse.urlsplit(s)
+    path = urllib.quote(path, '/%')
+    qs = urllib.quote_plus(qs, ':&=')
+    return urlparse.urlunsplit((scheme, netloc, path, qs, anchor))
 
 # import and define tornado-y things
 from tornado.options import define, options
@@ -21,6 +36,7 @@ class Application(tornado.web.Application):
         )
         handlers = [
             (r"/([^/]+)?", MainHandler),
+            (r"/post_form/", FormHandler),
             (r"/(favicon\.ico)", tornado.web.StaticFileHandler, dict(path=settings['static_path'])),
         ]
         tornado.web.Application.__init__(self, handlers, **settings)
@@ -40,6 +56,16 @@ class MainHandler(tornado.web.RequestHandler):
             page_heading='Hi!',
             google_analytics_id=google_analytics_id,
         )
+
+class FormHandler(tornado.web.RequestHandler):
+    def get(self    ):
+        username = self.get_argument('username')
+        if username == '':
+            form_response = {'error': True, 'msg': 'Please enter your username.'}
+        else:
+            msg = url_fix(username)
+            form_response = {'error': True, 'msg': msg }
+        self.write(form_response)
 
 
 # RAMMING SPEEEEEEED!
